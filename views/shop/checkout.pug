@@ -1,0 +1,54 @@
+extends ../layouts/main-layout.pug
+block content
+    if msg
+        div.alert(onclick="this.style.display='none';") 
+            span.product__title  #{msg}
+    if checkoutProds.checkoutPrice==0
+        form(action='/orders?checkout=true', method="post")
+            button.smallbtn(type="submit",disabled=true,style="background-color:grey") Checkout
+    else
+        h3(id="checkoutPrice") Total Checkout Price : #{checkoutProds.checkoutPrice}
+        if checkoutProds!=null
+            form(action='/orders?checkout=true', method="post")
+                button.smallbtn(type="submit") Checkout
+                div.grid
+                    each product in checkoutProds.products
+                        if product!=null
+                            div.griditem
+                                article.card.product-item   
+                                    header.card__header
+                                        h1.product__title #{product.bean.title} 
+                                    div.card__image
+                                        img(src=product.bean.imageUrl,alt="Image")
+                                    div.card__content
+                                        h2(id='prodPrice'+product.bean.id).product__price #{product.bean.price}
+                                        p.product__description #{product.bean.description} 
+                                        h3(id='prodQty'+product.bean.id).product__description  #{product.qty}
+                                        p.product__description Choose Quantity 
+                                        select(name='qnty', id='qnty',onchange="updateQty(this.value,"+product.bean.id+")")
+                                            each _, val in Array(product.bean.totalQty)
+                                                if((val+1)==product.qty)
+                                                    option(value=product.qty,selected=true) #{product.qty}
+                                                else
+                                                    option=val+1
+                                                
+    script(type="text/javascript").
+        
+        function updateQty(qty,id)
+        {
+           document.getElementById('prodQty'+id).innerHTML=qty;
+           var data =!{JSON.stringify(checkoutProds.products)}
+           //alert(data);
+           let checkoutPrice=0;
+           for(let i=0;i<data.length;i++)
+           {
+               let p=Number(document.getElementById('prodPrice'+data[i].bean.id).innerHTML);
+               let q=Number(document.getElementById('prodQty'+data[i].bean.id).innerHTML);
+               //alert(p+" "+q);
+               checkoutPrice=checkoutPrice+(p*q);
+           }
+           document.getElementById('checkoutPrice').innerHTML="Total Checkout Price : "+checkoutPrice;
+        }
+        function goto(val){
+            window.location="/product-details/"+val;
+        }

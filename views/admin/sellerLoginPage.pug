@@ -1,0 +1,16 @@
+extends ../layouts/main-layout.pug
+block content
+    h1 Seller Login Page
+    if msg
+        div.alert(onclick="this.style.display='none';") 
+            span.product__title  #{msg}   
+    body.center
+        form(action="/existingSellerCheck?register=false",method="post")
+            div.username
+                input(type="text" placeholder="Enter your email ID",name="emailId",required)
+            div.password
+                input(type="password" placeholder="Enter Password",name="password",required)
+            button.smallbtn(type="submit") Login as Seller
+        h3 Not a member
+        form.product-form(action='/sellerRegistrationPage', method="get")
+            button.smallbtn(type="submit") Register as Seller

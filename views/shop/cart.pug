@@ -1,0 +1,45 @@
+extends ../layouts/main-layout.pug
+block content
+    if cartProducts.length==0 || cart.totalPrice<=0
+        form(action='/checkout', method="post")
+            input#title(type="hidden", name="id")
+            button.smallbtn(type="submit",disabled=true,style="background-color:grey") Checkout All Products From Cart
+    else
+        form(action='/checkout', method="post")
+            input#title(type="hidden", name="id")
+            button.smallbtn(type="submit") Checkout All Products From Cart
+    h3 Total Price : #{cart.totalPrice}
+    br
+    br
+    if cartProducts!=[]
+        div.grid
+            each product in cartProducts
+                if  product 
+                    div.griditem(onclick="goto("+product.bean.id+")")
+                        article.card.product-item   
+                            header.card__header
+                                h1.product__title #{product.bean.title} 
+                            div.card__image
+                                img(src=product.bean.imageUrl,alt="Image")
+                            div.card__content
+                                h2.product__price #{product.bean.price}
+                                p.product__description #{product.bean.description} 
+                                h3.product__description Quantity : #{product.qty}
+                            .card__actions
+                                form.product-form(action=`/product-details/`+product.bean.id, method="get")
+                                    button.btn(type="submit") Product Details
+                                br
+                                br
+                                form(action='/deleteFromCart', method="post")
+                                    input#title(type="hidden", name="id",value=product.bean.id)
+                                    button.btn(type="submit") Remove From Cart
+                                if product.bean.totalQty <=0
+                                    p.btn Out Of Stock
+    else
+        h1 No Items in your Cart!
+    script(type="text/javascript").
+        
+        function goto(val){
+            window.location="/product-details/"+val;
+        }
+    

@@ -1,0 +1,16 @@
+extends ../layouts/main-layout.pug
+block content
+    h1 Customer Login Page
+    if msg
+        div.alert(onclick="this.style.display='none';") 
+            span.product__title  #{msg}   
+    body.center
+        form(action="/existingUserCheck?register=false",method="post")
+            div.username
+                input(type="text" placeholder="Enter your email ID",name="emailId",required)
+            div.password
+                input(type="password" placeholder="Enter Password",name="password",required)
+            button.smallbtn(type="submit") Login
+        h3 Not a member
+        form.product-form(action='/registrationPage', method="get")
+            button.smallbtn(type="submit") Register 

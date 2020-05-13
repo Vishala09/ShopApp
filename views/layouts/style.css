@@ -1,0 +1,269 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+* {
+  box-sizing: border-box;
+}
+
+.bkimg {
+  background-image: url(https://image.freepik.com/free-vector/smartphone-online-shop-e-commerce-internet-store-vector-flat-cartoon_101884-171.jpg);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+main {
+  padding: 1rem;
+  margin: auto;
+}
+
+.main-header {
+  width: 100%;
+  height: 3.5rem;
+  background-color: #00695c;
+  padding: 0 1.5rem;
+}
+
+.main-header__nav {
+  display: flex;
+  float:left;
+  height: 100%;
+  align-items: center;
+}
+
+.main-header__item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-header__item {
+  margin: 0 1rem;
+  padding: 0;
+}
+
+.main-header__item a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-header__item a:hover,
+.main-header__item a:active,
+.main-header__item a.active {
+  color: #ffeb3b;
+}
+
+.main-header__item button {
+  text-decoration: none;
+  color: white;
+}
+
+.main-header__item button:hover,
+.main-header__item button:active,
+.main-header__item button.active {
+  color: #ffeb3b;
+}
+
+.navbtn{
+  text-decoration: none;
+  color: white;
+  background-color: #00695c;
+  border:none;
+  font-size: 18px;
+}
+
+.navbtn:hover,.navbtn:active,.navbtn.active{
+  color: #ffeb3b;
+  cursor: pointer;
+}
+
+form {
+  display: inline;
+}
+
+.centered {
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+
+
+.griditem:hover {
+  background-color: greenyellow; 
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.card__header,
+.card__content {
+  padding: 1rem;
+}
+
+.card__header h1,
+.card__content h1,
+.card__content h2,
+.card__content p {
+  margin: 0;
+}
+
+.card__image {
+  width: 100%;
+}
+img{
+  width: 100%;
+  height:200px;
+}
+.card__image img {
+  width: 100%;
+}
+
+.card__actions {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card__actions button,
+.card__actions a {
+    margin: 0 0.25rem;
+}
+
+.btn {
+  border: none;
+  outline: 0;
+  padding: 5px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  text-decoration:none;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #00695c;
+  color: white;
+}
+
+.smallbtn {
+  border: none;
+  outline: 0;
+  padding: 5px;
+  color: white;
+  background-color: #11b42c;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  text-decoration:none;
+}
+
+.smallbtn:hover,
+.smallbtn:active {
+  background-color:black;
+  color: #11b42c;
+}
+
+
+.product-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+}
+
+.product-item {
+  width: 20rem;
+  max-width: 100%;
+
+}
+
+.product__title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.product__price {
+  text-align: center;
+  color: #4d4d4d;
+  margin-bottom: 0.5rem;
+}
+
+.product__description {
+  text-align: center;
+}
+
+
+.form-control {
+  margin: 1rem 0;
+  padding: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.form-control label,
+.form-control input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.form-control input {
+  border: 1px solid #a1a1a1;
+  font: inherit;
+  border-radius: 2px;
+}
+
+.form-control input:focus {
+  outline-color: #00695c;
+}
+
+.alert {
+  padding: 5px;
+  background-color: #54a309;
+  color: white;
+  border-radius : 5px;
+  cursor:pointer;
+  width:100%;
+  font-weight:bold;
+}
+
+
+.username input,
+.password input {
+  width: 40%;
+  height: 40px;
+  border: 2px solid black;
+  margin: 5px 5px 15px;
+  box-sizing: border-box;
+  padding: 15px 15px;
+  font-size: 18px;
+}
+
+
+select{
+  font-size:18px;width:150px;height:30px;background-color:#00695c;border:none;margin-right: 25px;
+}
+option{
+      
+  font-size:18px;width:150px;height:30px;background-color:#00695c
+}
+/* */
+
+

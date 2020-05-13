@@ -1,0 +1,29 @@
+extends ../layouts/main-layout.pug
+block content
+    h3 Your Orders
+        if orders!=undefined
+            div.grid
+                each product in orders
+                    if product!=null
+                        div.griditem
+                            article.card.product-item   
+                                header.card__header
+                                    h1.product__title #{product.productBean.title} 
+                                    h2.product__title OrderId : #{product.orderId} 
+                                    h3.product__title Date of order : #{product.datetime} 
+                                div.card__image
+                                    img(src=product.productBean.imageUrl,alt="Image",style="height:100px;width:100px")
+                                div.card__content
+                                    h2.product__price Rs.#{product.orderPrice}
+                                    p.product__description #{product.description}
+                                    p.product__description Quantity #{product.qty}
+                                
+    
+    
+    
+    
+            
+
+    
+
+    

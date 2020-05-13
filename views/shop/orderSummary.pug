@@ -1,0 +1,15 @@
+extends ../layouts/main-layout.pug
+block content
+    h1.centered Order Summary
+    div.griditem
+        article.card.product-item  
+            header.card__header
+                h1.product__title #{product.bean.productBean.title} 
+                h2.product__title OrderId : #{product.bean.orderId} 
+                h3.product__title Date of order : #{product.bean.datetime} 
+            div.card__image
+                img(src=product.bean.productBean.imageUrl,alt="Image")
+            div.card__content
+                h2.product__price #{product.bean.orderPrice}
+                p.product__description #{product.bean.description}
+                h3.product__description Quantity : #{product.bean.qty}

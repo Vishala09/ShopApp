@@ -1,0 +1,20 @@
+extends ../layouts/main-layout.pug
+block content
+    h1 Sold Out Items
+    if OrderedProds!=null && OrderedProds.length > 0
+        div.grid
+            each product in OrderedProds
+                if product!=null
+                    div.griditem(onclick="/product-details/`"+product.bean.productBean.id)
+                        article.card.product-item   
+                            header.card__header
+                                h1.product__title #{product.bean.productBean.title} 
+                            div.card__image
+                                img(src=product.bean.productBean.imageUrl,alt="Image",style="height:100px;width:100px")
+                            div.card__content
+                                h2.product__price Order Price #{product.bean.orderPrice}
+                                h4.product__description #{product.bean.productBean.description}
+                                h4.product__description Ordered Quantity :  #{product.bean.qty}
+                                h4.product__description Order Id : #{product.bean.orderId}
+                                h4.product__description Time Of Order : #{product.bean.datetime}
+                                h4.product__description Ordered By : #{product.emailId}

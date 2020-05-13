@@ -1,0 +1,20 @@
+extends ../layouts/main-layout.pug
+block content
+    h1 Registration Page
+    if msg
+        div.alert(onclick="this.style.display='none';") 
+            span.product__title  #{msg} 
+    body.center
+        form(action="/existingUserCheck?register=true",method="post")
+            div.username
+                input(type="text" placeholder="Enter your name",name="username",required)
+            div.username
+                input(type="text" placeholder="Enter your email ID",name="emailId",required)
+            div.username
+                input(type="number" placeholder="Enter your contact",name="contact",required)
+            div.password
+                input(type="password" placeholder="Enter Password",name="password",required)
+            button.smallbtn(type="submit") Register
+        h3 Already a member
+        form.product-form(action='/loginPage', method="get")
+            button.smallbtn(type="submit") Login 

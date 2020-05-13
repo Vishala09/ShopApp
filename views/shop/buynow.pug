@@ -1,0 +1,28 @@
+extends ../layouts/main-layout.pug
+block content
+    div.griditem
+        article.card.product-item  
+            header.card__header
+                h1.product__title #{product.title} 
+            div.card__image
+                img(src=product.imageUrl,alt="Image")
+            div.card__content
+                h2(id="price").product__price #{product.price}
+                p.product__description #{product.description}
+                .card__actions
+                    form.product-form(action='/orderSummary', method="post")
+                        p.product__description Quantity :
+                            select(name='qty', id='qty',onchange="updatePrice(this.value)")
+                                each _, val in Array(product.totalQty)
+                                    option=val+1
+                        input#title(type="hidden", name="id",value=product.id)
+                        if(product.totalQty>0)
+                            button.btn(type="submit") Confirm - Buy Now 
+                        else
+                            button.btn(type="submit",disbled=true) Out Of Stock
+    script(type="text/javascript").
+        
+        function updatePrice(qty)
+        {
+           document.getElementById('price').innerHTML=Number(qty)*Number(!{JSON.stringify(product.price)});
+        }

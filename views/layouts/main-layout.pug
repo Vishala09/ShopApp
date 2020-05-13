@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{docTitle}
+        link(rel="stylesheet" type="text/css" href="../public/main.css")
+    style
+        include style.css
+    body
+        header.main-header
+            if loggedInAs == "seller"
+                nav.main-header__nav
+                    h3.main-header__item
+                        a(href="/",class=(path==="/" ? 'active' : 'none')) Shop
+                    h3.main-header__item
+                        a(href="/admin-products",class=(path==="/admin-products" ? 'active' : 'none')) Admin products
+                    h3.main-header__item
+                        a(href="/add-product",class=(path==="/add-product" ? 'active' : 'none')) Add Product
+                    h3.main-header__item
+                        a(href="/soldOut",class=(path==="/soldOut" ? 'active' : 'none')) Sold Out
+                    h3.main-header__item
+                        if loggedInAs ===undefined
+                            a(href="/loginPage",class=(path==="/register" ? 'active' : 'none')) Log In as customer
+                        else
+                            a(href="/logoutPage",class=(path==="/register" ? 'active' : 'none')) Log Out
+                    if seller
+                        h4 #{seller.username}
+                    
+            else
+                nav.main-header__nav
+                    div
+                        select(id="page",onchange="handleSelect(this.value)")
+                            option(value="/") Shop
+                            option(value="/products-list") HOME
+                            option(value="/cart") Cart
+                            option(value="/orders") My Orders
+                    div
+                        form(action='/sellerLoginPage',method="get")
+                            button.navbtn(type="submit",class=(path==="/loginPage" ? 'active' : 'none')) 
+                                h3.main-header__item Sell Products
+                    h3.main-header__item
+                        a(href="/",class=(path==="/" ? 'active' : 'none')) Shop
+                    h3.main-header__item
+                        a(href="/products-list",class=(path==="/products-list" ? 'active' : 'none')) Products
+                    h3.main-header__item
+                        a(href="/checkout",class=(path==="/checkout" ? 'active' : 'none')) Checkout
+                    h3.main-header__item(style="float:right")
+                        if loggedInAs ===undefined
+                            a(href="/loginPage",class=(path==="/register" ? 'active' : 'none')) Log In
+                        else 
+                            a(href="/logoutPage",class=(path==="/register" ? 'active' : 'none')) Log Out     
+                    a(href="/cart",class=(path==="/cart" ? 'active' : 'none'))
+                        img(src="https://www.pngmart.com/files/7/Cart-PNG-Clipart.png",style="height:40px;width:40px",alt="CART")
+                    if user
+                        h4 Welcome #{user.username}
+        main
+            block content
+script(type="text/javascript").
+    function handleSelect(loc)
+    {
+        window.location = loc;
+    }

@@ -1,0 +1,55 @@
+extends ../layouts/main-layout.pug
+block content
+    if prods!=null && prods.length > 0   
+        if msg
+            div.alert(onclick="this.style.display='none';") 
+                span.product__title  #{msg}      
+        div.grid
+            each product in prods
+                if product!=null
+                    div.griditem(onclick="goto("+product.id+")")
+                        article.card.product-item   
+                            header.card__header
+                                h1.product__title #{product.title} 
+                            div.card__image
+                                img(src=product.imageUrl,alt="Image")
+                            div.card__content
+                                h2.product__price #{product.price}
+                                h4.product__description Seller : #{product.seller}
+                                p.product__description #{product.description}
+                                p.product__description Available  
+                                    b(style="color:red") #{product.totalQty}
+                            .card__actions
+                                form.product-form(action='/cart', method="post")
+                                    input#title(type="hidden", name="id",value=product.id)
+                                    button.btn(type="submit") Add To Cart
+                                br
+                                br
+                                form.product-form(action=`/product-details/`+product.id, method="get")
+                                    button.btn(type="submit") Product Details
+                                br
+                                br
+                                if product.totalQty > 0
+                                    form.product-form(action='/buynow', method="post")
+                                        input#title(type="hidden", name="id",value=product.id)
+                                        button.btn(type="submit") Buy Now
+                                else
+                                    form.product-form(action='/buynow', method="post")
+                                        input#title(type="hidden", name="id",value=product.id)
+                                        button.btn(type="submit",disabled="true") Out Of Stock
+    else
+        h3 No products to display
+    script(type="text/javascript").
+        
+        function goto(val){
+            window.location="/product-details/"+val;
+        }
+    
+    
+    
+    
+            
+
+    
+
+    

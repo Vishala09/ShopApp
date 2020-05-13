@@ -1,0 +1,10 @@
+extends ../layouts/main-layout.pug
+block content
+    form(action="/added", method="post").product-form
+        input#title(type="text", name="title",placeholder="Enter product name",required).form-control
+        input#imageUrl(type="text", name="imageUrl",placeholder="Enter product image url",required).form-control
+        input#description(type="text", name="description",placeholder="Enter product description",required).form-control
+        input#price(type="number", name="price",placeholder="Enter product price",required).form-control
+        input#price(type="number", name="totalQty",placeholder="Enter product quantity",min=1,required).form-control
+        br
+        button.btn(type="submit") Add Product

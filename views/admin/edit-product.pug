@@ -1,0 +1,10 @@
+extends ../layouts/main-layout.pug
+block content
+    form(action=`/save/`+product.id, method="post").product-form
+        input#title(type="text", name="title",value=product.title,required).form-control
+        input#imageUrl(type="text", name="imageUrl",value=product.imageUrl,required).form-control
+        input#description(type="text", name="description",value=product.description,required).form-control
+        input#price(type="number", name="price",value=product.price,required).form-control
+        input#price(type="number", name="totalQty",value=product.totalQty,min=1,required).form-control
+        br
+        button.btn(type="submit") Save Product
