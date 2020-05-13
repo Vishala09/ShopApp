@@ -1,0 +1,46 @@
+A Shopping Application 
+
+Customers:
+    nairobi@gmail.com      pass:Nairobi123
+    tokyo@gmail.com        pass:Tokyo123
+Sellers:
+    denver@gmail.com       pass:Denver123
+    rio@gmail.com          pass:Rio123
+    
+2 types of account :- Customer , Seller
+Seller can
+   Add Product
+   Edit Product 
+   Delete Product
+   Check on Sold outproducts(By whom,time,quantity etc..)
+Customer can
+    View Product Details
+    Add To Cart
+    Checkout all the products in Cart(can choose quantity for each item)
+    Buy a single product(can choose quantity)
+    Has a Orders page
+    Has Orders Summary Page
+
+Working:-
+    Each Product has quantity attribute(posted by seller)
+    Add to cart:-
+        Quantity increases inside cart on each add to cart (So quantity in cart page will be the number of times 'add to cart' is clicked)
+        But, On checkout quantity will be total Quantity available for particular product
+    Checkout:-
+        Customer can select number of quantity(for each) for which the total checkout price will change accordingly.
+        Clicking checkout will take to Orders page.
+Login/Logout:-
+    Aes for password encryption.
+    Login/Register for Customer and Seller
+    NOTE:
+        If Customer doesn't log out and creates a seller account(register),
+        seller account is linked with customer account.
+        Try this:
+            Login to customer acc
+            Dont Logout
+            Login to seller account(click on sell products)
+            Now logout from seller account
+            You need not login with your customer acc again
+            (here tokyo@gmail.com is linked with rio@gmail.com)
+Database:-
+    Json files are used for storage.

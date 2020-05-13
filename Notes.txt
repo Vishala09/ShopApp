@@ -1,0 +1,12 @@
+Customers:
+    nairobi@gmail.com      pass:Nairobi123
+    tokyo@gmail.com        pass:Tokyo123
+Sellers:
+    denver@gmail.com       pass:Denver123
+    rio@gmail.com          pass:Rio123
+
+npm install
+    pug
+    express
+    body-parser
+    crypto
